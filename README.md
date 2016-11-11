@@ -1,58 +1,23 @@
-# mercury-client
+## 什么是量化投资
++ ** 量化投资是一种主动型投资策略，将适当的投资思想、投资经验（甚至包括直觉）反映在量化模型中，建立可以反复使用并优化的投资组合，试图战胜市场从而获取超额收益。**
++ ** 简而言之，量化投资把你的投资想法通过数据和计算模型来验证并指导投资决策。**
 
 
-# Tutorial
+## 量化投资的优点
+** 量化投资的最大好处在于，可以在决策过程中避免主观臆断和情绪影响，而且能够发现复杂的数据规律，快速抓住交易机会。**
 
 
-## 1. Install python 2.7                                                                                                         
+# 策略思想
+### 1. 羊驼策略
+**基本思想**：在股票池中的所有股票，每天按照收益率从小到大进行排序，起始时买入num_of_stocks只股票，然后每天在整个股票池中选出收益率前num_of_stocks，如果这些股票未持有则买入，已持有，则继续持有，并把收益率不是排在前num_of_stocks的股票卖掉。
 
-## 2. Install mercury-client package from Github
+### 2.我的投资策略
+**基本思想**：通过热门题材建仓，基于羊驼策略思想生成卖出信号，通过筛选的量化因子生成买入信号，具体步骤：
+1. 选择热门主题中任意20只过票进行建仓
+2. 每次调仓时每天按照收益率从小到大进行排序，卖出收益最好和最差的一只股票
+3. 筛选出符合量化因子（20日均线、分析师预期等）标准的任意两只股票
 
-   Datayes Official Github is: https://github.com/DataYes/mercury-client, You can download the mercury-client package here.
-   Or download directly from [here](http://litaotao.github.io/files/mercuryclient.rar)
-
-### 2.1 Uncompress the package
-### 2.2 Intall the package
-    
-- Open the command line tool 
-    - windows: cmd
-    - linux/mac: terminal
-- Use the ***cd*** command to go the the package directory which contains ***setup.py*** file 
-- Execute command ***python setup.py install*** to install the mercury-client package
-
-## 3. USAGE:
-
-***Steps***
-
-- Get an client instance
-    - import mercury
-    - client = mercury.Client(username='username', password='password')
-- Use that instance to list/get/delete your files in Datayes Mercury.
-    - lists()
-        Show the all the data in one user's mercury data zone.
-    - get(filename='', download_all=False)
-        Get user's data according to filename, can be a string or a list of string. 
-        If set all to True, will download all the data file. 
-    - delete(filename)
-        Delete user's data according to filename, can only be a string.
-
-***EXAMPLES***
-
-    import mercury
-    client = mercury.Client('taotao.li@datayes.com', 'password')
-    all_files = client.lists()
-    client.get(filename='123.txt')
-    client.delete(filename='123.txt')
-
-Bellow is the screenshot of the above:
-![mercury-client.jpg](http://litaotao.github.io/images/mercury-client.jpg)
-
-# 中文使用步骤
-    
-- 安装Python 2.7
-- 安装mercury-client包
-- 生成client实例
-- 使用client进行list/get/delete操作
-
-
-
++ 投资域 ：沪深300成分股
++ 业绩基准 ：沪深300指数
++ 调仓频率 ：每3个交易日的14:45
++ 回测周期 ：2014年1月1日至2015年5月5日
